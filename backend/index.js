@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 3006;
 conectarDB();
 
 // 2. Middlewares Globales
-app.use(cors());
+app.use(cors({
+  origin: 'https://extraordinary-flexibility-production.up.railway.app'
+}));
 app.use(express.json());
 
 // 3. Servir archivos estáticos (MP3 y Portadas)
