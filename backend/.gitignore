@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+
+# Ignorar archivos subidos pero mantener la estructura de carpetas
+uploads/audio/*
+uploads/portadas/*
+!uploads/audio/.gitkeep
+!uploads/portadas/.gitkeep
+
+# Logs de errores
+*.log

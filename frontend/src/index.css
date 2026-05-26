@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Crimson Pro", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-amazon-dark: var(--border-color);
+  --color-amazon-green: var(--accent-color);
+  --color-amazon-leaf: #4a7c44;
+  --color-amazon-earth: var(--muted-text);
+  --color-amazon-clay: var(--clay-text);
+  --color-amazon-sand: var(--divider-color);
+  --color-amazon-pulp: var(--bg-color);
+}
+
+/* Theme Defaults (Kraft) */
+:root {
+  --bg-color: #fffdf5; /* pulp */
+  --text-color: #1a2f23; /* dark text */
+  --heading-color: #1a2f23;
+  --card-bg: #fffdf5;
+  --accent-color: #2d5a27; /* green */
+  --border-color: #1a2f23;
+  --shadow-color: rgba(26, 47, 35, 0.1);
+  --divider-color: rgba(26, 47, 35, 0.1);
+  --muted-text: #8c6a46;
+  --clay-text: #b88b58;
+  --hero-bg: #f4e9d8;
+  --hero-heading: #1a2f23;
+  --hero-text: #8c6a46;
+}
+
+[data-theme='claro'] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --heading-color: #000000;
+  --card-bg: #ffffff;
+  --accent-color: #2d5a27;
+  --border-color: #0c1a12;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --divider-color: rgba(0, 0, 0, 0.1);
+  --muted-text: #5b4a3a;
+  --clay-text: #8b4513;
+  --hero-bg: #f4f4f4;
+  --hero-heading: #000000;
+  --hero-text: #5b4a3a;
+}
+
+[data-theme='oscuro'] {
+  --bg-color: #0c1a12;
+  --text-color: #f4f4f4;
+  --heading-color: #ffffff;
+  --card-bg: #1a2f23;
+  --accent-color: #4ade80;
+  --border-color: #f4e9d8;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --divider-color: rgba(244, 233, 216, 0.1);
+  --muted-text: #a89a8d;
+  --clay-text: #e2a87c;
+  --hero-bg: #1a2f23;
+  --hero-heading: #ffffff;
+  --hero-text: #f4e9d8;
+}
+
+[data-theme='kraft'] {
+  --bg-color: #fffdf5;
+  --text-color: #1a2f23;
+  --heading-color: #1a2f23;
+  --card-bg: #fffdf5;
+  --accent-color: #2d5a27;
+  --border-color: #1a2f23;
+  --shadow-color: rgba(26, 47, 35, 0.1);
+  --divider-color: rgba(26, 47, 35, 0.1);
+  --muted-text: #8c6a46;
+  --clay-text: #b88b58;
+  --hero-bg: #f4e9d8;
+  --hero-heading: #1a2f23;
+  --hero-text: #8c6a46;
+}
+
+/* Base resets */
+@layer base {
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    @apply font-sans transition-colors duration-300 antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif transition-colors duration-300;
+    color: var(--heading-color);
+  }
+}
+
+.zine-paper {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--shadow-color);
+  border: 1px solid var(--divider-color);
+  @apply transition-all duration-300;
+}
+
+.zine-tab {
+  border: 2px solid var(--border-color);
+  background-color: var(--card-bg);
+  @apply p-4 transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1;
+  box-shadow: 4px 4px 0 0 var(--border-color);
+}
+
+.zine-btn {
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  @apply inline-flex items-center gap-2 px-6 py-2 font-display font-medium uppercase tracking-wider transition-all active:translate-x-0.5 active:translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none;
+  box-shadow: 3px 3px 0 0 var(--border-color);
+}
+
+.zine-btn-primary {
+  background-color: var(--border-color);
+  color: var(--bg-color);
+}
+
+.zine-divider {
+  @apply h-1 w-full my-8;
+  background-color: var(--divider-color);
+}
+
+/* Texture overlay */
+.zine-texture::before {
+  content: "";
+  @apply fixed inset-0 pointer-events-none opacity-[0.03] z-[9999];
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
