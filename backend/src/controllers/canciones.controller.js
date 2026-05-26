@@ -1,3 +1,5 @@
+const Cancion = require('../models/Cancion');
+
 const subirCancion = async (req, res) => {
   try {
     if (!req.usuario) {
@@ -46,3 +48,45 @@ const subirCancion = async (req, res) => {
     res.status(500).json({ error: 'Hubo un error al subir la canción' });
   }
 };
+
+const getCanciones = async (req, res) => {
+  try {
+    const canciones = await Cancion.find().sort({ createdAt: -1 });
+    res.status(200).json(canciones);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener el catálogo de canciones' });
+  }
+};
+
+const getPopulares = async (req, res) => {
+  try {
+    const populares = await Cancion.find().sort({ megusta: -1 }).limit(10);
+    res.status(200).json(populares);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener las canciones populares' });
+  }
+};
+
+const darMeGusta = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cancionActualizada = await Cancion.findByIdAndUpdate(
+      id,
+      { $inc: { megusta: 1 } },
+      { new: true }
+    );
+
+    if (!cancionActualizada) {
+      return res.status(404).json({ error: 'Canción no encontrada' });
+    }
+
+    res.status(200).json({ 
+      mensaje: '¡Voto registrado!', 
+      megusta_totales: cancionActualizada.megusta 
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al registrar el me gusta' });
+  }
+};
+
+module.exports = { subirCancion, getCanciones, getPopulares, darMeGusta };
