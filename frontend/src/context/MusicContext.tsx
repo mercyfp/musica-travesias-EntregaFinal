@@ -31,11 +31,36 @@ export function MusicProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('travesias_favs', JSON.stringify(favoritos));
   }, [favoritos]);
 
-  const playSong = (song: any, allSongs?: any[]) => {
-    // Si se pasa una lista (ej. desde MusicaPage), actualizamos la cola de reproducción
+ const playSong = (song: any, allSongs?: any[]) => {
     if (allSongs && allSongs.length > 0) {
       setQueue(allSongs);
     }
+
+    const songId = (song._id || song.id).toString();
+    const rawUrl = song.url || song.archivo_url;
+    let audioUrl;
+
+    if (rawUrl?.startsWith('data:') || !rawUrl?.startsWith('http')) {
+      audioUrl = `${API_URL}/api/canciones/${songId}/audio`;
+    } else {
+      audioUrl = rawUrl;
+    }
+
+    let imageUrl = song.image || song.portada_url;
+    if (imageUrl?.startsWith('data:') || (imageUrl && !imageUrl.startsWith('http'))) {
+      imageUrl = `${API_URL}/api/canciones/${songId}/portada`;
+    }
+
+    setCurrentSong({
+      ...song,
+      id: songId,
+      url: audioUrl,
+      image: imageUrl,
+      title: song.title || song.titulo,
+      artist: song.artist || song.artista
+    });
+    setIsPlaying(true);
+  };
 
     // Normalización de la URL del Audio usando la configuración global
     const audioUrl = (song.url || song.archivo_url)?.startsWith('http') 
