@@ -1,9 +1,0 @@
-{
-  "provider": "node",
-  "build": {
-    "cmds": ["npm install", "npm run build"]
-  },
-  "start": {
-    "cmd": "caddy run --config Caddyfile"
-  }
-}
