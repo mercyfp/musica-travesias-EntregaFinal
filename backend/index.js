@@ -18,7 +18,7 @@ app.use(express.json());
 
 // 3. Servir archivos estáticos (MP3 y Portadas)
 // Usamos path.join para asegurar que encuentre la carpeta sin importar desde donde se ejecute el servidor
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static('/app/uploads'));
 
 // 4. Ruta de salud (Health Check)
 app.get('/api/health', (req, res) => {
