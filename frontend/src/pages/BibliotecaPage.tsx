@@ -76,7 +76,7 @@ export default function BibliotecaPage() {
                       >
                         <div className="w-20 h-20 bg-amazon-dark shrink-0 overflow-hidden border-2 border-amazon-dark shadow-[2px_2px_0_0_#1a2f23]">
                           <img 
-                            src={song.portada_url ? `${API_URL}${song.portada_url}` : 'https://via.placeholder.com/150'} 
+                           src={song.portada_url || 'https://via.placeholder.com/150'}
                             className="w-full h-full object-cover" 
                             alt={song.titulo}
                           />
@@ -133,7 +133,7 @@ export default function BibliotecaPage() {
                     <div className="flex items-center gap-4 min-w-0">
                       <div className="w-12 h-12 bg-amazon-dark/5 border-2 border-amazon-dark/20 overflow-hidden grayscale group-hover:grayscale-0 transition-all shadow-[2px_2px_0_0_rgba(0,0,0,0.1)]">
                         <img 
-                          src={song.portada_url ? `${API_URL}${song.portada_url}` : 'https://via.placeholder.com/100'} 
+                          src={song.portada_url || 'https://via.placeholder.com/100'} 
                           className="w-full h-full object-cover opacity-60 group-hover:opacity-100" 
                         />
                       </div>
