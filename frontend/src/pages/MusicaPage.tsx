@@ -153,11 +153,11 @@ export default function MusicaPage() {
                 </button>
 
                 <div className="aspect-square relative overflow-hidden bg-amazon-dark border-b-4 border-amazon-dark">
-                  <img 
-                    src={song.portada_url ? `${API_URL}${song.portada_url}` : 'https://via.placeholder.com/400'} 
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" 
-                    alt={song.titulo}
-                  />
+                 <img 
+  src={song.portada_url || 'https://via.placeholder.com/400'} 
+  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105" 
+  alt={song.titulo}
+/>
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-amazon-dark/20 backdrop-blur-[2px]">
                     <button 
                       onClick={() => {
