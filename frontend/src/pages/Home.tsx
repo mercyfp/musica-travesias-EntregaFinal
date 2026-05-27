@@ -141,7 +141,7 @@ export default function Home() {
                     className="aspect-square bg-amazon-dark border-2 border-amazon-dark mb-4 overflow-hidden cursor-pointer"
                   >
                     <img 
-                      src={song.portada_url ? `${API_URL}${song.portada_url}` : 'https://via.placeholder.com/400'} 
+                     src={song.portada_url || 'https://via.placeholder.com/400'}
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
                       alt={song.titulo}
                     />
