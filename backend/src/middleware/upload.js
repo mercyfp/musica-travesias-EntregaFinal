@@ -1,26 +1,6 @@
 const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
 
-// Asegurar que las carpetas existan
-const audioDir = '/app/uploads/audio';
-const portadasDir = '/app/uploads/portadas';
-fs.mkdirSync(audioDir, { recursive: true });
-fs.mkdirSync(portadasDir, { recursive: true });
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (file.fieldname === 'audio') {
-      cb(null, audioDir);
-    } else if (file.fieldname === 'portada') {
-      cb(null, portadasDir);
-    }
-  },
-  filename: (req, file, cb) => {
-    const nombreUnico = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, nombreUnico + path.extname(file.originalname));
-  }
-});
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   if (file.fieldname === 'audio') {
