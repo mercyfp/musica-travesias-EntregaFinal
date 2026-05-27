@@ -41,8 +41,8 @@ export default function Footer() {
             </div>
             
             <div className="text-[10px] font-bold uppercase tracking-tighter leading-tight flex flex-col gap-1 opacity-60">
+              <p>Mercy Dayanna Florez Parra</p>
               <p>Carlos Daniel Gomez Murcia</p>
-              <p>Mercy Florez</p>
               <p>Esteban ...</p> {/* Puedes añadir el apellido de Esteban aquí */}
             </div>
 
